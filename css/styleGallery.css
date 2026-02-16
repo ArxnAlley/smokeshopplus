@@ -1,0 +1,144 @@
+/* ========================================
+   INTRO SECTION (NO HERO)
+======================================== */
+
+.galleryIntro
+{
+    padding: 160px 8% 80px;
+    text-align: center;
+    background: var(--bgMain);
+}
+
+.galleryMainTitle
+{
+    font-family: Orbitron;
+    font-size: clamp(36px, 4.5vw, 56px);
+    margin-bottom: 20px;
+}
+
+.galleryMainTitle span
+{
+    color: var(--primary); /* or var(--secondary) */
+    text-shadow: 0 0 20px var(--primaryGlow);
+}
+
+.gallerySubtext
+{
+    opacity: .6;
+    margin-bottom: 60px;
+    letter-spacing: .5px;
+}
+
+/* ========================================
+   SECTIONS
+======================================== */
+
+.gallerySection
+{
+    padding: 60px 8% 120px;
+}
+
+#glass
+{
+    padding-top: 20px;
+}
+
+
+/* ========================================
+   SCROLL REVEAL HEADERS
+======================================== */
+
+.galleryTitle
+{
+    text-align: center;
+    font-family: Orbitron;
+    font-size: 32px;
+    margin-bottom: 60px;
+    color: var(--secondary);
+    text-shadow: 0 0 5px var(--secondaryGlow);
+
+    opacity: 0;
+    transform: translateY(80px) scale(.92);
+    filter: blur(6px);
+
+    transition:
+    opacity .8s cubic-bezier(.2, .7, .2, 1),
+    transform .8s cubic-bezier(.2, .7, .2, 1),
+    text-shadow .8s ease,
+    filter .8s ease;   /* ← add this */
+}
+
+.galleryTitle.reveal
+{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    text-shadow: 0 0 25px var(--secondaryGlow);
+    filter: blur(0);
+}
+
+
+/* ========================================
+   GRID
+======================================== */
+
+.galleryGrid
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px;
+}
+
+
+/* ========================================
+   CARD
+======================================== */
+
+.galleryCard
+{
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, .08);
+    transition: .4s ease;
+}
+
+.galleryCard img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .6s ease;
+}
+
+
+/* HOVER EFFECT */
+
+.galleryCard:hover
+{
+    transform: translateY(-12px);
+    border-color: var(--secondary);
+    box-shadow:
+    0 0 25px var(--secondaryGlow),
+    0 0 60px rgba(0, 255, 167, .15);
+}
+
+.galleryCard:hover img
+{
+    transform: scale(1.08);
+}
+
+
+/* ========================================
+   SMOOTH SCROLL
+======================================== */
+
+html
+{
+    scroll-behavior: smooth;
+}
+
+section{
+  scroll-margin-top:90px;
+}

@@ -1,0 +1,1521 @@
+/* =====================================================
+   ROOT / GLOBAL
+===================================================== */
+
+:root
+{
+    --bgMain: #050507;
+    --bgDark: #070710;
+    --bgBlack: #000;
+
+    --primary: #CC18F5;
+    --primaryGlow: rgba(204, 24, 245, .35);
+
+    --secondary: #00FFA7;
+    --secondaryGlow: rgba(0, 255, 167, .35);
+
+    --textWhite: #FFFFFF;
+    --textDim: rgba(255, 255, 255, .75);
+
+    --glassBg: rgba(255, 255, 255, .05);
+    --glassBorder: rgba(255, 255, 255, .1);
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    font-family: Inter, sans-serif;
+    background: var(--bgMain);
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   SHARED SECTIONS
+===================================================== */
+
+.section
+{
+    padding: 120px 8%;
+    text-align: center;
+}
+
+.sectionDark
+{
+    background: var(--bgDark);
+}
+
+.sectionTitle
+{
+    font-family: Orbitron;
+    font-size: 36px;
+    margin-bottom: 60px;
+}
+
+.logo
+{
+    font-family: Orbitron;
+    flex-shrink: 0;
+}
+
+.logo span
+{
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
+
+/* =====================================================
+   NAV
+===================================================== */
+
+.nav
+{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 8%;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, .35);
+    z-index: 3000;
+}
+
+
+/* =====================================================
+   NAV LINKS
+===================================================== */
+
+.navLinksLayout
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(12px, 2vw, 30px);
+    flex: 1;
+    white-space: nowrap;
+}
+
+.navLinksStyle a
+{
+    text-decoration: none;
+    color: var(--textDim);
+    transition: .3s;
+    opacity: .5;
+    font-size: clamp(14px, 1.05vw, 20px);
+}
+
+.navLinksStyle a:hover
+{
+    color: var(--textWhite);
+    opacity: 1;
+}
+
+
+/* =====================================================
+   CALL BUTTON
+===================================================== */
+
+.callBTN
+{
+    padding: 10px 22px;
+    text-decoration: none;
+    border-radius: 40px;
+    background: var(--secondary);
+    color: #000;
+    font-weight: 600;
+    box-shadow: 0 0 18px var(--secondaryGlow);
+    transition: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.phoneIcon
+{
+    display: none;
+}
+
+.callBTN:hover
+{
+    transform: translateY(-2px);
+    box-shadow: 0 0 28px var(--secondary);
+    color: var(--primary);
+}
+
+
+/* =====================================================
+   HAMBURGER
+===================================================== */
+
+.hamburger
+{
+    display: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    flex-shrink: 0;
+    transition: .3s;
+}
+
+.hamburger:focus-visible
+{
+    outline: 2px solid var(--secondary);
+    outline-offset: 4px;
+    border-radius: 6px;
+}
+
+.hamburger span
+{
+    width: 26px;
+    height: 3px;
+    background: var(--secondary);
+    border-radius: 3px;
+    box-shadow: 0 0 10px var(--secondaryGlow);
+    transition: .3s ease;
+}
+
+.hamburger:hover
+{
+    transform: translateY(-2px);
+}
+
+.hamburger:hover span
+{
+    box-shadow: 0 0 20px var(--secondary);
+}
+
+
+/* =====================================================
+   FLOATING PILLS
+===================================================== */
+
+.addressPill
+{
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    padding: 10px 18px;
+    border-radius: 40px;
+    background: var(--glassBg);
+    border: 1px solid var(--glassBorder);
+    backdrop-filter: blur(10px);
+    font-size: .85rem;
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--textWhite);
+    transition: .25s;
+    z-index: 999;
+}
+
+.ratingPill
+{
+    position: fixed;
+    top: 90px;
+    left: 20px;
+    padding: 10px 18px;
+    border-radius: 40px;
+    background: var(--glassBg);
+    border: 1px solid var(--glassBorder);
+    backdrop-filter: blur(10px);
+    font-size: .85rem;
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--textWhite);
+    transition: .25s;
+    z-index: 999;
+}
+
+.addressCompact,
+.ratingCompact
+{
+    display: none;
+}
+
+.addressPill:hover
+{
+    transform: translateY(-2px);
+    box-shadow: 0 0 12px var(--primary);
+}
+
+.ratingPill:hover
+{
+    transform: translateY(-2px);
+    box-shadow: 0 0 14px var(--secondary);
+}
+
+/* ========================================
+   PILL VISIBILITY CONTROL
+======================================== */
+
+.addressPill,
+.ratingPill
+{
+    transition: opacity .4s ease, transform .4s ease;
+}
+
+.pillsHidden .addressPill,
+.pillsHidden .ratingPill
+{
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    position:relative;
+    height:100vh;
+
+    display:flex;
+    align-items:center;   /* keeps headline vertically balanced */
+    justify-content:center;
+
+    text-align:center;
+    padding-top:80px;
+
+    background:
+    radial-gradient(circle at 20% 20%, #360F5A, transparent 40%),
+    radial-gradient(circle at 80% 80%, #00e5ff33, transparent 40%);
+}
+
+
+.heroContent
+{
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.hero h1
+{
+    font-size: clamp(44px, 5vw, 64px);
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.heroAccent
+{
+    color: var(--primary);
+    text-shadow: 0 0 20px var(--primaryGlow);
+}
+
+.heroSub
+{
+    font-size: 18px;
+    opacity: .6;
+    letter-spacing: .5px;
+    margin-top: 10px;
+}
+
+.heroHours
+{
+    font-weight: 600;
+    color: var(--secondary);
+    text-shadow: 0 0 10px var(--secondaryGlow);
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.heroInfo{
+    display:flex;
+    flex-direction:column;
+    gap:6px; /* controls ONLY the spacing between these two lines */
+}
+
+
+.heroButtons{
+    position:absolute;
+    bottom:60px;     /* adjust between 50–90px to taste */
+
+    left:50%;
+    transform:translateX(-50%);
+    white-space: nowrap;
+    display:flex;
+    gap:18px;
+}
+
+
+/* ========================================
+   GLOBAL BUTTON
+======================================== */
+
+.glowBTN
+{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 40px;
+    background: var(--primary);
+    color: var(--textWhite);
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .3s ease;
+    box-shadow: 0 0 20px var(--primaryGlow);
+}
+
+.glowBTN:hover
+{
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px var(--primary);
+}
+
+/* ========================================
+   GHOST BUTTON (PREMIUM OUTLINE STYLE)
+======================================== */
+
+.ghostBTN{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px; /* THIS fixes the icon touching the S */
+
+    padding:15px 40px;
+    border-radius:50px;
+    font-weight:600;
+    text-decoration:none;
+
+    color:rgba(255,255,255,.88);
+
+    background:transparent;
+    border:2px solid var(--primary);
+
+    transition:
+        border-color .25s ease,
+        color .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+
+/* ICON BASE STYLE */
+
+.ghostBTN svg{
+    width:20px;
+    height:20px;
+
+    stroke:currentColor; /* THIS is the magic */
+
+    transition:
+        stroke .25s ease,
+        transform .25s ease;
+}
+
+
+/* HOVER — NOTICE NO PINK FILL */
+
+.ghostBTN:hover{
+
+    transform:translateY(-3px);
+
+    border-color:var(--secondary);
+
+    box-shadow:0 0 18px var(--secondaryGlow);
+}
+
+
+/* ICON HOVER COLOR SHIFT */
+
+.ghostBTN:hover svg{
+
+    stroke:var(--secondary);
+
+    transform:scale(1.12);
+}
+
+
+/* =====================================================
+   STOREFRONT
+===================================================== */
+
+.storeHero{
+    position: relative;
+    height: clamp(500px, 100vh, 900px);
+    padding-top: 80px;
+    perspective: 1200px;
+    overflow: hidden;
+}
+
+
+/* Background image layer */
+
+.storeBg
+{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 10%; /* adjust until sign is perfectly centered */
+    z-index: 0;
+    display: block;
+}
+
+/* Subtle pink ambient glow (supports sign, not overpowering) */
+
+.storeHero::after
+{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+    circle at 50% 15%,
+    rgba(204, 24, 245, .14),
+    transparent 60%
+    );
+    z-index: 2;
+}
+
+/* Bottom fade for readability */
+
+.heroGradient
+{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+    to bottom,
+    rgba(5, 5, 7, .05) 0%,
+    rgba(5, 5, 7, .45) 40%,
+    rgba(5, 5, 7, .92) 100%
+    );
+    z-index: 1;
+}
+
+/* ===============================
+   CENTER OVERLAY
+================================ */
+
+.storeOverlay
+{
+    max-width: 560px;
+    width: min(90%, 560px);
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 5;
+}
+
+/* Subtle kicker — not loud */
+
+.storeKicker
+{
+    letter-spacing: 4px;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .7);
+    margin-bottom: 16px;
+}
+
+/* Main hook */
+
+.storeOverlay h2
+{
+    font-size: clamp(34px, 4vw, 52px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Accent word — NO glow, just slight weight */
+
+.storeOverlay .accent
+{
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Supporting line */
+
+.storeSub
+{
+    font-size: 18px;
+    opacity: .75;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* ===============================
+   FLOATING CARDS
+================================ */
+
+.heroCards{
+    position:absolute;
+    left:0;
+    bottom:60px;  
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    padding:0 clamp(20px, 6vw, 90px);
+    z-index:4;
+    pointer-events:none;
+
+}
+
+
+.heroCard{
+    width: fit-content;
+    max-width: 90%;
+    flex-shrink: 0; 
+    padding: 28px;
+    border-radius: 20px;
+    backdrop-filter: blur(14px);
+    background:
+    linear-gradient(
+        160deg,
+        rgba(204, 24, 245, .18),
+        rgba(0, 255, 167, .12)
+    );
+    border: 1px solid rgba(255,255,255,.12);
+    color: var(--textWhite);
+    font-weight: 600;
+    font-size: clamp(16px, 1vw, 18px);
+    letter-spacing: .5px;
+    line-height: 1.2;
+    white-space: nowrap; 
+    text-shadow: 0 2px 6px rgba(0,0,0,.45);
+    position: relative;
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        box-shadow .45s cubic-bezier(.2,.8,.2,1);
+    -webkit-font-smoothing: antialiased;
+    pointer-events:auto;
+
+}
+
+
+
+/* Clean border glow — toned down */
+
+.heroCard::before
+{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1px;
+    background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, .15),
+    rgba(255, 255, 255, .05)
+    );
+    -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+
+/* Offset positioning */
+
+.heroCard
+{
+    transform: translateY(0);
+}
+
+
+.heroCard:hover{
+    transform: translateY(-12px) scale(1.02);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45),
+        0 0 40px rgba(204,24,245,.12);
+}
+
+
+/* =====================================================
+   ABOUT SECTION
+===================================================== */
+
+.aboutSection
+{
+    background: linear-gradient(180deg, #070710 0%, #050507 100%);
+}
+
+.aboutGrid
+{
+    max-width: 900px;
+    margin: 0 auto 80px auto;
+}
+
+.aboutIntro p
+{
+    line-height: 1.8;
+    margin-bottom: 24px;
+    opacity: .85;
+    font-size: 18px;
+}
+
+/* =====================================================
+   OWNER SECTION
+===================================================== */
+
+.ownerRealImage
+{
+    width: 100%;
+    max-width: 360px;
+    height: 420px;           /* match previous placeholder height */
+    border-radius: 24px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid rgba(255, 255, 255, .08);
+    box-shadow: 0 0 40px rgba(204, 24, 245, .15);
+    transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.ownerRealImage:hover
+{
+    transform: translateY(-6px);
+    box-shadow:
+    0 0 30px rgba(204, 24, 245, .25),
+    0 0 60px rgba(204, 24, 245, .15);
+}
+
+.ownerSection
+{
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* IMAGE SIDE */
+
+.ownerImage
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ownerImage::after
+{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    background: radial-gradient(circle at 30% 20%, rgba(204, 24, 245, .2), transparent 60%);
+    z-index: -1;
+}
+
+.ownerAccent
+{
+    color: var(--primary);
+    text-shadow: 0 0 12px var(--primaryGlow);
+}
+
+/* TEXT SIDE */
+
+.ownerContent h3
+{
+    font-family: Orbitron;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.ownerContent p
+{
+    line-height: 1.8;
+    margin-bottom: 18px;
+    opacity: .85;
+}
+
+.ownerSignature
+{
+    margin-top: 30px;
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primaryGlow);
+    font-weight: 600;
+}
+
+/* =====================================================
+   PREMIUM CATEGORY SECTION
+===================================================== */
+
+.categoriesSection
+{
+    position: relative;
+    overflow: hidden;
+}
+
+/* GRID */
+
+.categoryGrid
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+    margin-bottom: 70px;
+}
+
+/* CARD */
+
+.categoryCard
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 40px;
+    height: 320px;
+    border-radius: 24px;
+    text-decoration: none;
+    color: var(--textWhite);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .08);
+    background: linear-gradient(160deg, #0a0a14, #050507);
+    transition: .4s cubic-bezier(.2, .8, .2, 1);
+}
+
+/* Overlay gradient */
+
+.categoryOverlay
+{
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(0, 255, 167, .18), transparent 60%);
+    opacity: .6;
+    transition: .4s;
+}
+
+/* TEXT */
+
+.categoryCard h3
+{
+    font-family: Orbitron;
+    font-size: 24px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.categoryCard p
+{
+    opacity: .7;
+    position: relative;
+    z-index: 2;
+}
+
+/* HOVER LIFT */
+
+.categoryCard:hover
+{
+    transform: translateY(-12px);
+    border-color: var(--secondary);
+    box-shadow:
+    0 0 25px var(--secondaryGlow),
+    0 0 60px rgba(0, 255, 167, .25);
+}
+
+
+/* Glow sweep animation */
+
+.categoryCard::before
+{
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(0, 255, 167, .2) 45%,
+    rgba(0, 255, 167, .45) 50%,
+    rgba(0, 255, 167, .2) 55%,
+    transparent 100%
+    );
+    transform: rotate(25deg);
+    transition: .6s;
+}
+
+.categoryCard:hover::before
+{
+    left: 100%;
+}
+
+/* Subtle zoom */
+
+.categoryCard:hover .categoryOverlay
+{
+    opacity: 1;
+}
+
+/* Button spacing */
+
+.categoriesBTN
+{
+    margin-top: 20px;
+}
+
+/* =====================================================
+   REVIEWS (PREMIUM STYLE)
+===================================================== */
+
+.reviewsSection
+{
+    background: linear-gradient(180deg, #050507 0%, #080812 100%);
+    position: relative;
+}
+
+/* HEADER */
+
+.reviewsHeader
+{
+    text-align: center;
+    max-width: 900px;
+    margin: auto;
+    margin-bottom: 70px;
+}
+
+.googleBadge
+{
+    letter-spacing: 3px;
+    font-size: 18px;
+    color: #CC18F5;
+    margin-bottom: 70px;
+}
+
+.reviewsTitle
+{
+    font-size: 42px;
+    margin-top: 0;
+    margin-bottom: 60px;
+}
+
+/* TOP FLEX */
+
+.reviewsTop
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+/* BIG RATING */
+
+.bigRating
+{
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.ratingStars
+{
+    color: #FFD43B;
+    font-size: 22px;
+    margin: 6px 0;
+}
+
+.ratingSub
+{
+    opacity: .7;
+    font-size: 14px;
+}
+
+
+/* GRID */
+
+.reviewsGrid
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+}
+
+/* CARD */
+
+.reviewCard
+{
+    background: rgba(255, 255, 255, .03);
+    backdrop-filter: blur(6px);
+    padding: 28px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, .05);
+    transition: .3s;
+}
+
+.reviewCard:hover
+{
+    transform: translateY(-8px);
+    border-color: rgba(204, 24, 245, .4);
+}
+
+.reviewStars
+{
+    color: #FFD43B;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.reviewText
+{
+    line-height: 1.7;
+    opacity: .9;
+}
+
+.reviewAuthor
+{
+    margin-top: 16px;
+    font-weight: 600;
+    opacity: .85;
+}
+
+/* ========================================
+   Dancing Google Reviews Label
+======================================== */
+
+.waveBadgeText
+{
+    display: inline-block;
+}
+
+.waveBadgeText span 
+{
+    display: inline-block;
+    animation: badgeWaveJump 1.6s ease-in-out infinite;
+    text-shadow: 0 0 8px rgba(204, 24, 245, .6);
+}
+
+/* Stagger effect */
+
+.waveBadgeText span:nth-child(1)  { animation-delay: 0s; }
+.waveBadgeText span:nth-child(2)  { animation-delay: 0.05s; }
+.waveBadgeText span:nth-child(3)  { animation-delay: 0.1s; }
+.waveBadgeText span:nth-child(4)  { animation-delay: 0.15s; }
+.waveBadgeText span:nth-child(5)  { animation-delay: 0.2s; }
+.waveBadgeText span:nth-child(6)  { animation-delay: 0.25s; }
+.waveBadgeText span:nth-child(7)  { animation-delay: 0.3s; }
+.waveBadgeText span:nth-child(8)  { animation-delay: 0.35s; }
+.waveBadgeText span:nth-child(9)  { animation-delay: 0.4s; }
+.waveBadgeText span:nth-child(10) { animation-delay: 0.45s; }
+.waveBadgeText span:nth-child(11) { animation-delay: 0.5s; }
+.waveBadgeText span:nth-child(12) { animation-delay: 0.55s; }
+.waveBadgeText span:nth-child(13) { animation-delay: 0.6s; }
+.waveBadgeText span:nth-child(14) { animation-delay: 0.65s; }
+
+@keyframes badgeWaveJump
+{
+    0%   { transform: translateY(0); }
+    25%  { transform: translateY(-8px); }
+    50%  { transform: translateY(0); }
+    100% { transform: translateY(0); }
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.mainFooter
+{
+    background: var(--bgDark);
+    padding: 80px 8% 40px;
+}
+
+.footerContainer
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 48px;
+    margin-bottom: 40px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto 40px auto;
+}
+
+.footerContainer > div
+{
+    max-width: 320px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+.footerBottom
+{
+    border-top: 1px solid var(--glassBorder);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    color: var(--textDim);
+    font-size: .85rem;
+}
+
+
+
+/* =====================================================
+   FOOTER LINK STYLING (ADD THIS — DO NOT REPLACE)
+===================================================== */
+
+/* underline ONLY the headings */
+
+.footerContainer h4
+{
+    text-decoration: underline;
+    margin-bottom: 12px;
+}
+
+
+/* remove default browser link styles */
+
+.footerContainer a
+{
+    display: block;
+    text-decoration: none;
+    color: var(--textDim);
+    opacity: .6;
+    transition: .25s ease;
+}
+
+.footerContainer a:hover
+{
+    color: var(--textWhite);
+    opacity: 1;
+}
+
+.footerSocials{
+    margin-top:18px;
+    display:flex;
+    gap:14px;
+}
+
+.footerSocials a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.15);
+
+    color:rgba(255,255,255,.7);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        color .25s ease,
+        box-shadow .25s ease;
+}
+
+
+/* =====================================================
+   FOOTER TYPOGRAPHY (ADD RIGHT HERE)
+===================================================== */
+
+.footerBrand,
+.footerHours,
+.footerLinks,
+.footerLegal
+{
+    line-height: 1.9;
+}
+
+/* =====================================================
+   DEV CREDITS
+===================================================== */
+
+.devLine
+{
+    opacity: 1;
+    color: var(--textDim);
+}
+
+.devCredit
+{
+    color: var(--secondary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: .25s;
+    opacity: 1;
+}
+
+.devCredit:hover
+{
+    color: var(--secondary);
+    opacity: .5;
+}
+
+/* =====================================================
+   MOBILE MENU PANEL
+===================================================== */
+
+.mobileMenu
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%);
+    transition: transform .6s cubic-bezier(.2, .8, .2, 1);
+    z-index: 1100;
+}
+
+.mobileMenu.active
+{
+    transform: translateY(0);
+}
+
+.mobileMenuInner
+{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+}
+
+.mobileMenuInner a
+{
+    font-family: Orbitron;
+    font-size: 28px;
+    text-decoration: none;
+    color: var(--textWhite);
+    letter-spacing: 2px;
+    position: relative;
+    transition: .4s;
+}
+
+/* neon underline grow */
+
+.mobileMenuInner a::after
+{
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background: var(--primary);
+    box-shadow: 0 0 15px var(--primary);
+    transition: .4s;
+}
+
+.mobileMenuInner a:hover
+{
+    color: var(--primary);
+    text-shadow: 0 0 15px var(--primaryGlow);
+}
+
+.mobileMenuInner a:hover::after
+{
+    width: 100%;
+}
+
+/* Call button special style */
+
+.mobileCall
+{
+    color: var(--secondary);
+    text-shadow: 0 0 12px var(--secondaryGlow);
+}
+
+/* =====================================================
+   HAMBURGER ANIMATION (CENTERED ROTATION)
+===================================================== */
+
+.hamburger
+{
+    position: relative;
+}
+
+.hamburger span
+{
+    position: absolute;
+    left: 0;
+    width: 26px;
+    height: 3px;
+    border-radius: 3px;
+    transition: .35s ease;
+}
+
+.hamburger span:nth-child(1)
+{
+    top: 8px;
+}
+
+.hamburger span:nth-child(2)
+{
+    top: 16px;
+}
+
+.hamburger span:nth-child(3)
+{
+    top: 24px;
+}
+
+/* ACTIVE STATE */
+
+.hamburger.active span:nth-child(1)
+{
+    top: 16px;
+    transform: rotate(45deg);
+    background: var(--primary);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+.hamburger.active span:nth-child(2)
+{
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3)
+{
+    top: 16px;
+    transform: rotate(-45deg);
+    background: var(--primary);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+/* =====================================================
+   ACTIVE X COLOR PULSE
+===================================================== */
+
+@keyframes xColorPulse
+{
+
+    0%
+    {
+        background: var(--primary);
+        box-shadow: 0 0 20px var(--primary);
+    }
+
+    50%
+    {
+        background: var(--secondary);
+        box-shadow: 0 0 20px var(--secondary);
+    }
+
+    100%
+    {
+        background: var(--primary);
+        box-shadow: 0 0 20px var(--primary);
+    }
+
+}
+
+/* Apply ONLY when hamburger is active */
+
+.hamburger.active span:nth-child(1),
+.hamburger.active span:nth-child(3)
+{
+    animation: xColorPulse 8s ease-in-out infinite;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+/* -------- 1300px -------- */
+
+@media (max-width: 1300px)
+{
+
+    .googleBadge
+    {
+        margin-top: 40px;
+    }
+
+}
+
+
+/* -------- 1200px -------- */
+
+@media (max-width: 1200px)
+{
+
+    .heroCards
+    {
+        display: none;
+    }
+
+}
+
+
+/* -------- 1000px (Storefront Focal Adjust) -------- */
+
+@media (max-width: 1000px)
+{
+
+    .storeBg
+    {
+        object-position: center 18%;
+    }
+
+    .storeOverlay
+    {
+        top: 48%;
+    }
+
+}
+
+
+/* -------- 960px -------- */
+
+@media (max-width: 960px)
+{
+
+    .phoneText
+    {
+        display: none;
+    }
+
+    .phoneIcon
+    {
+        display: block;
+    }
+
+    .callBTN
+    {
+        padding: 10px;
+        border-radius: 50%;
+    }
+
+    .googleBadge
+    {
+        margin-top: 80px;
+    }
+
+    .ownerSection
+    {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .ownerImage
+    {
+        order: -1;
+    }
+
+}
+
+
+/* -------- 860px (Storefront Mobile Adjust) -------- */
+
+@media (max-width: 860px)
+{
+
+    .storeHero
+    {
+        height: 60vh;   /* reduces vertical pressure */
+    }
+
+    .storeBg
+    {
+        object-position: center 15%;
+    }
+
+    .storeOverlay
+    {
+        top: 48%;
+    }
+
+}
+
+/* -------- 800px -------- */
+
+@media (max-width: 800px)
+{
+
+    .addressPill
+    {
+        top: 90px;
+        right: 12px;
+    }
+
+    .ratingPill
+    {
+        top: 140px;
+        left: 12px;
+    }
+
+}
+
+
+/* -------- 760px -------- */
+
+@media (max-width: 760px)
+{
+
+    .navLinksLayout
+    {
+        display: none;
+    }
+
+    .callBTN
+    {
+        display: none;
+    }
+
+    .hamburger
+    {
+        display: flex;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+
+
+/* -------- 480px -------- */
+
+@media (max-width: 480px)
+{
+
+    .addressFull,
+    .ratingFull
+    {
+        display: none;
+    }
+
+    .addressCompact,
+    .ratingCompact
+    {
+        display: inline;
+    }
+
+}
