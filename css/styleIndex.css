@@ -343,8 +343,7 @@ body
 
 .heroButtons{
     position:absolute;
-    bottom:60px;     /* adjust between 50–90px to taste */
-
+    bottom:20px;     /* adjust between 50–90px to taste */
     left:50%;
     transform:translateX(-50%);
     white-space: nowrap;
@@ -1475,22 +1474,24 @@ body
 
 @media (max-width: 768px){
 
-.heroCTAs{
-    position:absolute;
-    bottom:40px;
-    left:0;
-    width:100%;
-    padding:0 8%;
-    display:flex;
-    gap:14px;
-}
+    .heroButtons{
+        bottom: 20px;              /* tighter to bottom */
+        width: calc(100% - 32px);  /* account for padding */
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: normal;       /* allow wrapping */
+        flex-wrap: wrap;           /* allow stacking */
+        justify-content: center;
+        gap: 12px;
+    }
 
-.heroCTAs a{
-    flex:1;
-    font-size:14px;
-    padding:14px 16px;
-    border-radius:30px;
-}
+    .glowBTN,
+    .ghostBTN{
+        padding: 12px 16px;
+        font-size: 14px;
+        flex: 1 1 auto;            /* allow shrink */
+        max-width: 100%;
+    }
 }
 
 
@@ -1536,6 +1537,11 @@ body
     .ratingCompact
     {
         display: inline;
+    }
+
+    .ratingPill
+    {
+        top: 90px;
     }
 
 }
