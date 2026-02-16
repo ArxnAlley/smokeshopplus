@@ -1473,6 +1473,26 @@ body
 
 }
 
+@media (max-width: 768px){
+
+.heroCTAs{
+    position:absolute;
+    bottom:40px;
+    left:0;
+    width:100%;
+    padding:0 8%;
+    display:flex;
+    gap:14px;
+}
+
+.heroCTAs a{
+    flex:1;
+    font-size:14px;
+    padding:14px 16px;
+    border-radius:30px;
+}
+}
+
 
 /* -------- 760px -------- */
 
