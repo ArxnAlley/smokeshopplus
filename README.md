@@ -1,2 +1,2 @@
-# Smoke-Shop-plus
-Demo site for Smoke Shop+ by Nulo Studio
+# smokeshopplus
+Preview site for Smoke Shop+ by Nulo Studio
