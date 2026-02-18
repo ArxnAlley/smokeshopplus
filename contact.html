@@ -8,19 +8,17 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title> Smoke Shop+ | Gallery </title>
-
-        <meta name="description" content="Browse premium glass, wraps, vapes & accessories at Smoke Shop+ in Catlettsburg, KY.">
+        <title> Contact Smoke Shop+ </title>
 
         <!-- FONTS -->
 
-        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;600&family=Anton&display=swap" rel="stylesheet">
 
         <!-- CSS LINKS -->
 
         <link rel="stylesheet" href="css/styleIndex.css">
 
-        <link rel="stylesheet" href="css/styleGallery.css">
+        <link rel="stylesheet" href="css/styleForms.css">
 
         <!-- ICONS -->
 
@@ -30,7 +28,7 @@
 
     <body>
 
-        <!-- =======================================
+        <!-- ========================================
                         NAV
         ======================================== -->
 
@@ -39,9 +37,7 @@
             <!-- LOGO -->
 
             <a href="index.html" class="LOGO">
-
                 Smoke&nbsp;<span>Shop+</span>
-
             </a>
 
             <!-- NAV LINKS -->
@@ -56,7 +52,7 @@
 
                 <a href="index.html#reviews"> Reviews </a>
 
-                <a href="gallery.html" class="active"> Gallery </a>
+                <a href="gallery.html"> Gallery </a>
 
                 <!-- CONTACT DROPDOWN -->
 
@@ -67,8 +63,6 @@
                     </button>
 
                     <div class="navDropdownMenu">
-
-                        <a href="contact.html"> Contact Us </a>
 
                         <a href="hireForm.html"> Join The Team </a>
 
@@ -118,9 +112,7 @@
 
                 <a href="index.html#reviews"> Reviews </a>
 
-                <a href="gallery.html" class="active"> Gallery </a>
-
-                <a href="contact.html"> Contact Us </a>
+                <a href="gallery.html"> Gallery </a>
 
                 <a href="hireForm.html"> Join The Team </a>
 
@@ -133,142 +125,94 @@
         </div>
 
         <!-- ========================================
-                    INTRO HEADER
+                        FORM PAGE
         ======================================== -->
 
-        <section class="galleryIntro">
+        <main class="formPage">
 
-            <h1 class="galleryMainTitle">
-                Explore Our <span> Collection </span>
-            </h1>
+            <section class="formWrapper">
 
-            <p class="gallerySubtext">
-                Premium Smoke Gear &bull; In-Store Only
-            </p>
+                <h1 class="formTitle">
+                    Let's Connect
+                </h1>
 
-        </section>
+                <p class="formSub">
+                    Questions, product requests, or looking for something specific?
+                    Send us a message and our team will get back to you shortly.
+                </p>
 
-        <!-- ========================================
-                        GLASS
-        ======================================== -->
+                <form
+                    action="https://formspree.io/f/xqedbjjj"
+                    method="POST"
+                    class="eliteForm"
+                >
 
-        <section id="glass" class="gallerySection">
+                    <input type="hidden" name="_subject" value="Smoke Shop+ — New Customer Inquiry">
 
-            <h2 class="galleryTitle"> Premium Glass </h2>
+                    <input type="hidden" name="_captcha" value="false">
 
-            <div class="galleryGrid">
+                    <input type="hidden" name="page" value="Contact Page">
 
-                <div class="galleryCard">
+                    <div class="formGrid">
 
-                    <img src="images/glassGEAR.jpeg" alt="Colorful hand-blown glass pipes displayed inside the shop">
+                        <label for="name" class="visuallyHidden">
+                            Full Name
+                        </label>
 
-                </div>
+                        <input
+                            id="name"
+                            type="text"
+                            name="name"
+                            placeholder="Full Name"
+                            required
+                        >
 
-                <div class="galleryCard">
+                        <label for="email" class="visuallyHidden">
+                            Email Address
+                        </label>
 
-                    <img src="images/glassGEAR1.jpeg" alt="Premium glass water pipes with modern artistic designs">
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            placeholder="Email Address"
+                            required
+                        >
 
-                </div>
+                        <label for="phone" class="visuallyHidden">
+                            Phone Number
+                        </label>
 
-                <div class="galleryCard">
+                        <input
+                            id="phone"
+                            type="tel"
+                            name="phone"
+                            placeholder="Phone (optional)"
+                        >
 
-                    <img src="images/glassGEAR2.jpeg" alt="Large decorative glass bongs showcased on retail shelves">
+                    </div>
 
-                </div>
+                    <label for="message" class="visuallyHidden">
+                        How can we help you?
+                    </label>
 
-            </div>
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="How can we help you?"
+                        rows="6"
+                        required
+                    ></textarea>
 
-        </section>
+                    <button class="ghostSubmit">
+                        Send Message &#8594;
+                    </button>
 
-        <!-- ========================================
-                        VAPES
-        ======================================== -->
+                </form>
 
-        <section id="vapes" class="gallerySection sectionDark">
+            </section>
 
-            <h2 class="galleryTitle"> Vape Tech </h2>
-
-            <div class="galleryGrid">
-
-                <div class="galleryCard">
-
-                    <img src="images/vapeGEAR.jpeg" alt="Large decorative glass bongs showcased on retail shelves">
-
-                </div>
-
-                <div class="galleryCard">
-
-                    <img src="images/vapeGEAR1.jpeg" alt="Selection of modern vape devices available in-store">
-
-                </div>
-
-                <div class="galleryCard">
-
-                    <img src="images/vapeGEAR2.jpeg" alt="Colorful disposable vape products lined on shelves">
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- ========================================
-                        PAPERS
-        ======================================== -->
-
-        <section id="papers" class="gallerySection">
-
-            <h2 class="galleryTitle"> Wraps &amp; Papers </h2>
-
-            <div class="galleryGrid">
-
-                <div class="galleryCard">
-
-                    <img src="images/papersGEAR.jpeg" alt="Variety of rolling papers and wraps for smokers">
-
-                </div>
-
-                <div class="galleryCard">
-
-                    <img src="images/papersGEAR1.jpeg" alt="Top-brand rolling papers displayed for purchase">
-
-                </div>
-
-                <div class="galleryCard">
-
-                    <img src="images/papersGEAR3.jpeg" alt="Flavored wraps and smoking accessories on retail wall">
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- ========================================
-                        MERCH
-        ======================================== -->
-
-        <section id="merch" class="gallerySection sectionDark">
-
-            <h2 class="galleryTitle"> Merch &amp; Accessories </h2>
-
-            <div class="galleryGrid">
-
-                <div class="galleryCard">
-
-                    <img src="images/merchGEAR.jpeg" alt="Smoke shop apparel and accessories available in-store">
-
-                </div>
-
-                <div class="galleryCard">
-
-                    <img src="images/merchGEAR2.jpeg" alt="Branded merchandise and smoking accessories on display">
-
-                </div>
-
-            </div>
-
-        </section>
+        </main>
 
         <!-- ========================================
                         FOOTER
@@ -281,9 +225,7 @@
                 <div class="footerBrand">
 
                     <a href="index.html" class="LOGO">
-
                         Smoke&nbsp;<span>Shop+</span>
-
                     </a>
 
                     <p> Catlettsburg's Premium Smoke Destination. </p>
@@ -319,11 +261,11 @@
 
                     <a href="index.html#categories"> Gear </a>
 
+                    <a href="gallery.html"> Gallery </a>
+
                     <a href="index.html#reviews"> Reviews </a>
 
                     <a href="index.html#whyUs"> About </a>
-
-                    <a href="index.html"> Home </a>
 
                 </div>
 
@@ -346,11 +288,8 @@
                 <p> &copy; 2026 Smoke Shop+ </p>
 
                 <p class="devLine">
-
                     Crafted Digital Experience &mdash;
-
                     <a href="#" class="devCredit"> Nulo Studio </a>
-
                 </p>
 
             </div>
@@ -361,9 +300,8 @@
 
         <script src="js/indexJS.js"></script>
 
-        <script src="js/galleryJS.js"></script>
-
         <script> lucide.createIcons(); </script>
+
 
     </body>
 

@@ -1,83 +1,110 @@
-console.log("JS FILE LOADED");
+/* =========================================
+   GLOBAL CONSTANTS
+========================================= */
+
+ const API_KEY = "AIzaSyA0Sy2zj5Cif3gjbuvNits5juVpAGmXDfA";
+  
+  const PLACE_ID = "ChIJ54IVvUbfRYgRDOkYFnkYTyY";
 
 /* =========================================
    GLOBAL INIT
 ========================================= */
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", initApp);
 
-  console.log("DOM LOADED");
+function initApp(){
 
-  initReviews();
+  initSiteLoader();
   initMobileMenu();
   initPillVisibility();
-
-});
-
-/* =========================================
-   PILL SCROLL CONTROL
-========================================= */
-
-function initPillVisibility(){
-
-  const storeSection = document.getElementById("storeHero");
-  if(!storeSection) return;
-
-  function checkPosition(){
-
-    const storeBottom =
-      storeSection.offsetTop + storeSection.offsetHeight;
-
-    if(window.scrollY >= storeBottom -200){
-      document.body.classList.add("pillsHidden");
-    } else {
-      document.body.classList.remove("pillsHidden");
-    }
-
-  }
-
-  window.addEventListener("scroll", checkPosition);
-  window.addEventListener("resize", checkPosition);
-
-  checkPosition(); // run once on load
+  initFindUsForm();
+  setPageField();
+  initActiveNav();
+  initPageHighlight();
+  initReviews();
 
 }
 
-
-
 /* =========================================
-   MOBILE MENU SYSTEM
+   FIRST-VISIT LOADER (SESSION BASED)
 ========================================= */
 
-function initMobileMenu(){
+function initSiteLoader()
+{
 
-  const hamburger = document.querySelector(".hamburger");
-  const mobileMenu = document.getElementById("mobileMenu");
+  const loader = document.querySelector(".siteLoader");
+  
+  if(!loader) return;
 
-  if(!hamburger || !mobileMenu){
-    console.warn("Mobile menu elements not found.");
-    return;
+  const hasVisited = sessionStorage.getItem("visited");
+
+  if(!hasVisited){
+
+    document.body.classList.add("loading");
+    
+    sessionStorage.setItem("visited", "true");
+
+    window.addEventListener("load", () => 
+    {
+
+      
+      setTimeout(() => 
+      {
+
+          loader.classList.add("hidden");
+
+          document.body.classList.remove("loading");
+
+      }, 1600);
+
+    });
+
+  }
+  
+  else
+    {
+
+    loader.style.display = "none";
+
   }
 
-  hamburger.addEventListener("click", () => {
+}
+
+/* =========================================
+   MOBILE MENU (SCROLL LOCK SAFE)
+========================================= */
+
+function initMobileMenu()
+{
+
+  const hamburger = document.querySelector(".hamburgerBTN");
+  
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  if(!hamburger || !mobileMenu) return;
+
+  hamburger.addEventListener("click", () => 
+  {
 
     hamburger.classList.toggle("active");
+    
     mobileMenu.classList.toggle("active");
-
-    // Lock scroll when open
-    document.body.style.overflow =
-      mobileMenu.classList.contains("active") ? "hidden" : "auto";
+    
+    document.body.classList.toggle("menu-open");
 
   });
 
-  // Close when clicking any link
-  mobileMenu.querySelectorAll("a").forEach(link => {
+  mobileMenu.querySelectorAll("a").forEach(link => 
+  {
 
-    link.addEventListener("click", () => {
+    link.addEventListener("click", () => 
+    {
 
       hamburger.classList.remove("active");
+      
       mobileMenu.classList.remove("active");
-      document.body.style.overflow = "auto";
+      
+      document.body.classList.remove("menu-open");
 
     });
 
@@ -85,99 +112,255 @@ function initMobileMenu(){
 
 }
 
-
 /* =========================================
-   GOOGLE REVIEWS (LIVE DATA)
+   PILL VISIBILITY (PERF SAFE)
 ========================================= */
 
-async function initReviews(){
+function initPillVisibility()
+{
 
-  console.log("REVIEWS FUNCTION FIRING");
+  const storeSection = document.getElementById("storeHero");
+  
+  if(!storeSection) return;
 
-  const grid = document.getElementById("reviewsGrid");
-  const score = document.getElementById("reviewScore");
-  const ratingSub = document.querySelector(".ratingSub");
-  const starsContainer = document.getElementById("ratingStars");
+  let storeBottom = calculateStoreBottom();
 
-  if(!grid){
-    console.warn("reviewsGrid not found — stopping.");
-    return;
+  function calculateStoreBottom()
+  {
+    return storeSection.offsetTop + storeSection.offsetHeight;
   }
 
-  /* =====================================
-     ⭐ PUT YOUR API KEY RIGHT HERE
-  ===================================== */
+  function checkPosition()
+  {
 
-  const API_KEY = "AIzaSyDBjHucVz_O-3Z44HNHX0aS7AaK_Hxkleg";
-  const PLACE_ID = "ChIJ54IVvUbfRYgRDOkYFnkYTyY";
+    if(window.scrollY >= storeBottom - 200)
+    {
+      document.body.classList.add("pillsHidden");
+    }
+    else
+    {
+      document.body.classList.remove("pillsHidden");
+    }
+
+  }
+
+  window.addEventListener("scroll", checkPosition, { passive:true });
+
+  window.addEventListener("resize", () => 
+  {
+    storeBottom = calculateStoreBottom();
+    
+    checkPosition();
+  });
+
+  checkPosition();
+
+}
+
+/* =========================================
+   FIND US AUTO SUBMIT
+========================================= */
+
+function initFindUsForm()
+{
+
+  const form = document.querySelector(".findUsForm");
+
+  if(!form) return;
+
+  form.querySelectorAll("input[type='radio']").forEach(radio => 
+  {
+
+    radio.addEventListener("change", () => 
+    {
+
+      setTimeout(() => form.submit(), 400);
+
+    });
+
+  });
+
+}
+
+/* =========================================
+   PAGE ATTRIBUTION
+========================================= */
+
+function setPageField()
+{
+
+  const pageField = document.getElementById("pageField");
+  
+  if(!pageField) return;
+
+  pageField.value = window.location.href;
+
+}
+
+/* =========================================
+   ACTIVE NAV — INTERSECTION OBSERVER
+========================================= */
+
+function initActiveNav()
+{
+
+  const sections = document.querySelectorAll("section[id]");
+  
+  if(!sections.length) return;
+
+  const navLinks = document.querySelectorAll
+  (
+    ".navLinks a, .mobileMenuInner a"
+  );
+
+  const observer = new IntersectionObserver((entries)=>
+    {
+
+    entries.forEach(entry=>
+    {
+
+      if(!entry.isIntersecting) return;
+
+      navLinks.forEach(link=>{
+
+        const href = link.getAttribute("href");
+        if(!href?.startsWith("#")) return;
+
+        link.classList.toggle(
+          "active",
+          href === "#" + entry.target.id
+        );
+
+      });
+
+    });
+
+  },{
+    rootMargin:"-40% 0px -55% 0px",
+    threshold:0.1
+  });
+
+  sections.forEach(section=>observer.observe(section));
+
+}
+
+/* =========================================
+   ACTIVE NAV — PAGE MATCH
+========================================= */
+
+function initPageHighlight()
+{
+
+  const currentPage =
+    
+  location.pathname.split("/").pop() || "index.html";
+
+  document.querySelectorAll(
+    ".navLinks a, .mobileMenuInner a"
+  )
+  
+  .forEach(link=>
+  {
+
+    const href = link.getAttribute("href");
+    
+    if(!href || href.startsWith("#")) return;
+
+    if
+    (
+      
+      href === currentPage ||
+      
+      (currentPage === "" && href === "index.html")
+
+    )
+    
+    {
+      link.classList.add("active");
+    }
+
+  });
+
+}
+
+/* =========================================
+   GOOGLE REVIEWS
+========================================= */
+
+async function initReviews()
+{
+
+  const grid = document.getElementById("reviewsGrid");
+  
+  if(!grid) return;
+
+  if(typeof API_KEY === "undefined") return;
+
+  const score = document.getElementById("reviewScore");
+  
+  const ratingSub = document.querySelector(".ratingSub");
+  
+  const starsContainer = document.getElementById("ratingStars");
 
   const url =
   `https://places.googleapis.com/v1/places/${PLACE_ID}?fields=rating,userRatingCount,reviews&key=${API_KEY}`;
 
-  try{
+  try
+  {
 
     const res = await fetch(url);
-
-    if(!res.ok){
-      const text = await res.text();
-      console.error("Google API FAILED:", text);
-      return;
-    }
+    
+    if(!res.ok) return;
 
     const data = await res.json();
 
-    console.log("Google Data:", data);
-
-    /* ⭐ Rating */
-    if(score && data.rating){
+    if(score && data.rating)
+    {
       score.textContent = data.rating.toFixed(1);
     }
 
-    /* ⭐ Review Count */
-    if(ratingSub && data.userRatingCount){
+    if(ratingSub && data.userRatingCount)
+    {
       ratingSub.textContent =
         `Based on ${data.userRatingCount} Google Reviews`;
     }
 
-    /* ⭐ Dynamic Stars */
-    if(starsContainer && data.rating){
+    if(starsContainer && data.rating)
+    {
 
       const fullStars = Math.floor(data.rating);
+      
       const halfStar = data.rating % 1 >= 0.5;
 
-      let stars = "★".repeat(fullStars);
+      starsContainer.textContent =
+        "★".repeat(fullStars) + (halfStar ? "½" : "");
 
-      if(halfStar){
-        stars += "½";
-      }
-
-      starsContainer.textContent = stars;
     }
 
     renderGoogleReviews(data.reviews, grid);
 
   }
-  catch(err){
-    console.error("Google Reviews Crash:", err);
+
+  catch
+  {
+    // silent fail — protects UI
   }
 
 }
 
-
 /* =========================================
-   GOOGLE REVIEW CARD RENDERER
+   GOOGLE REVIEW RENDERER
 ========================================= */
 
-function renderGoogleReviews(reviews, grid){
+function renderGoogleReviews(reviews, grid)
+{
 
-  if(!reviews || reviews.length === 0){
-    console.warn("No reviews returned from Google.");
-    return;
-  }
+  if(!reviews?.length) return;
 
   grid.innerHTML = "";
 
-  reviews.slice(0,5).forEach(review => {
+  reviews.slice(0,5).forEach(review => 
+  {
 
     const stars =
       "★".repeat(review.rating) +
@@ -189,15 +372,13 @@ function renderGoogleReviews(reviews, grid){
     const author =
       review?.authorAttribution?.displayName || "Google User";
 
-    const card = `
+    grid.insertAdjacentHTML("beforeend", `
       <div class="reviewCard">
         <div class="reviewStars">${stars}</div>
         <p class="reviewText">"${text}"</p>
         <div class="reviewAuthor">— ${author}</div>
       </div>
-    `;
-
-    grid.insertAdjacentHTML("beforeend", card);
+    `);
 
   });
 

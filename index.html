@@ -4,19 +4,25 @@
 
     <head>
 
-        <!-- ========================================
-                    ROOT / META
-        ======================================== -->
-
         <meta charset="UTF-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title> SmokeShop+ | Premium Smoke Shop </title>
+        <title> Smoke Shop+ | Premium Smoke Shop </title>
+
+        <meta name="description" content="Smoke Shop+ is Catlettsburg's premium smoke destination offering glass, vapes, wraps, kratom, and accessories. Open daily 8AM-Midnight.">
+
+        <!-- CSS LINK -->
 
         <link rel="stylesheet" href="css/styleIndex.css">
 
+        <!-- FONTS -->
+
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+        <!-- ICONS -->
 
         <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -24,19 +30,52 @@
 
     <body>
 
+        <!-- =======================================
+                        LOADER
+        ======================================== -->
 
-        <!-- ========================================
+        <div class="siteLoader">
+
+            <h1 class="siteLoaderLogo">
+                Smoke Shop+
+            </h1>
+
+            <div class="siteLoaderSmoke">
+
+                <div class="siteLoaderRing ringBig"></div>
+
+                <div class="siteLoaderRing ringSmall delay1"></div>
+
+                <div class="siteLoaderRing ringSmall delay2"></div>
+
+                <div class="siteLoaderRing ringSmall delay3"></div>
+
+            </div>
+
+            <p class="siteLoaderText">
+                Loading
+                <span class="siteLoaderDot"></span>
+                <span class="siteLoaderDot"></span>
+                <span class="siteLoaderDot"></span>
+            </p>
+
+        </div>
+
+        <!-- =======================================
                         NAV
         ======================================== -->
 
-        <nav class="nav">
+        <nav class="NAV">
 
-            <h2 class="logo"> Smoke<span> Shop+</span> </h2>
+            <!-- LOGO -->
 
+            <a href="index.html" class="LOGO">
+                Smoke&nbsp;<span>Shop+</span>
+            </a>
 
             <!-- NAV LINKS -->
 
-            <div class="navLinks navLinksLayout navLinksStyle">
+            <div class="navLinks">
 
                 <a href="#whyUs"> About </a>
 
@@ -46,23 +85,39 @@
 
                 <a href="gallery.html"> Gallery </a>
 
-            </div>
+                <!-- CONTACT DROPDOWN -->
 
+                <div class="navDropdown">
+
+                    <button class="navDropdownTrigger" aria-expanded="false">
+                        Contact &#9662;
+                    </button>
+
+                    <div class="navDropdownMenu">
+
+                        <a href="contact.html"> Contact Us </a>
+
+                        <a href="hireForm.html"> Join The Team </a>
+
+                    </div>
+
+                </div>
+
+            </div>
 
             <!-- CALL BUTTON -->
 
             <a href="tel:+16063698939" class="callBTN">
 
-                <span class="phoneText"> 📞 Call Now </span>
+                <span class="phoneText"> &#128222; Call Now </span>
 
-                <span class="phoneIcon"> 📞 </span>
+                <span class="phoneIcon"> &#128222; </span>
 
             </a>
 
-
             <!-- HAMBURGER -->
 
-            <button class="hamburger" aria-label="Open navigation menu">
+            <button class="hamburgerBTN" aria-label="Open navigation menu">
 
                 <span></span>
 
@@ -82,119 +137,135 @@
 
             <div class="mobileMenuInner">
 
-                <a href="#categories"> Gear </a>
+                <a href="#whyUs"> About </a>
 
-                <a href="gallery.html"> Gallery </a>
+                <a href="#categories"> Gear </a>
 
                 <a href="#reviews"> Reviews </a>
 
-                <a href="#whyUs"> About </a>
+                <a href="gallery.html"> Gallery </a>
 
-                <a href="tel:+16063698939" class="mobileCall"> 📞 Call Now </a>
+                <a href="contact.html"> Contact Us </a>
+
+                <a href="hireForm.html"> Join The Team </a>
+
+                <a href="tel:+16063698939" class="mobileCallBtn" aria-label="Call Smoke Shop Plus">
+                    <i data-lucide="phone"></i>
+                </a>
 
             </div>
 
         </div>
 
-
-        <!-- ========================================
+        <!-- =======================================
                     FLOATING PILLS
         ======================================== -->
 
         <a class="addressPill" href="https://www.google.com/maps/search/?api=1&query=3333+Louisa+Rd" target="_blank">
 
             <span class="addressFull">
-                📍 3333 Louisa Rd Suite 3, Catlettsburg, KY • Open 8AM-Midnight
+
+                &#128205; 3333 Louisa Rd Suite 3, Catlettsburg, KY &bull; Open 8AM-Midnight
+
             </span>
 
             <span class="addressCompact">
-                📍 Directions
+
+                &#128205; Directions
+
             </span>
 
         </a>
-
 
         <a href="#reviews" class="ratingPill">
 
             <span class="ratingFull">
-                ⭐⭐⭐⭐⭐ 5.0 Rating on Google
+
+                &#11088;&#11088;&#11088;&#11088;&#11088; 5.0 Rating on Google
+
             </span>
 
             <span class="ratingCompact">
-                ⭐ Google Rating
+
+                &#11088; Google Rating
+
             </span>
 
         </a>
 
-
+        <!-- MAIN CONTENT -->
 
         <main>
 
+            <!-- ========================================
+                        LANDING HERO
+            ======================================== -->
 
-<!-- ========================================
-                LANDING HERO
-======================================== -->
+            <section class="heroSection">
 
-<section class="hero">
+                <div class="heroContent">
 
-    <div class="heroContent">
+                    <h1>
 
-        <h1>
-            Catlettsburg's Premium
-            <span class="heroAccent">Smoke Shop</span>
-        </h1>
+                        Catlettsburg's Premium
 
-<div class="heroInfo">
+                        <span class="heroAccent"> Smoke Shop </span>
 
-    <p class="heroSub">
-        Glass • Wraps • Vapes • Kratom • Accessories
-    </p>
+                    </h1>
 
-    <p class="heroHours">
-        Open Daily 8AM - Midnight
-    </p>
+                    <div class="heroInfo">
 
-</div>
+                        <p class="heroSub">
 
+                            Glass &bull; Wraps &bull; Vapes &bull; Kratom &bull; Accessories
 
-        <!-- HERO BUTTON ROW -->
+                        </p>
 
-        <div class="heroButtons">
+                        <p class="heroHours">
 
-            <a href="gallery.html" class="glowBTN">
-                Browse Selection →
-            </a>
+                            Open Daily 8AM - Midnight
 
-            <a 
-                href="https://www.instagram.com/smokeshopplus/"
-                target="_blank"
-                rel="noopener"
-                class="ghostBTN">
+                        </p>
 
-                <i data-lucide="instagram"></i>
-                See What Just Landed →
+                    </div>
 
-            </a>
+                    <!-- HERO BUTTONS -->
 
+                    <div class="heroButtons">
 
-        </div>
+                        <a href="gallery.html" class="glowBTN">
 
-    </div>
+                            Browse Selection &#8594;
 
-</section>
+                        </a>
 
+                        <a href="https://www.instagram.com/smokeshopplus/" target="_blank" rel="noopener" class="ghostBTN">
 
+                            <i data-lucide="instagram"></i>
+
+                            <span class="desktopText"> New Drops </span>
+
+                            <span class="mobileText"> New Drops &#8594; </span>
+
+                            <span class="ctaArrow"> &#8594; </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
 
             <!-- ========================================
                         STOREFRONT
             ======================================== -->
 
-            <section class="storeHero" id="storeHero">
+            <section class="storefrontSection" id="storeHero">
 
                 <img src="images/storeFront5.jpeg" alt="Smoke Shop+ Storefront" class="storeBg">
 
-
-                <!-- GRADIENT LAYER -->
+                <!-- GRADIENT OVERLAY -->
 
                 <div class="heroGradient"></div>
 
@@ -206,11 +277,11 @@
 
                     <h2>
                         Catlettsburg's
-                        <span class="accent"> Smoke Experience </span>
+                        <span class="storeAccent"> Smoke Experience </span>
                     </h2>
 
                     <p class="storeSub">
-                        Premium glass. Elevated atmosphere. 
+                        Premium glass. Elevated atmosphere.
                         A storefront built different.
                     </p>
 
@@ -220,21 +291,19 @@
 
                 <div class="heroCards">
 
-                    <div class="heroCard left">The Standard For Smoke Shops</div>
+                    <div class="heroCard"> The Standard For Smoke Shops </div>
 
-                    <div class="heroCard right">Experience The Upgrade</div>
+                    <div class="heroCard"> Experience The Upgrade </div>
 
                 </div>
 
             </section>
 
-
-
             <!-- ========================================
                         ABOUT / WHY US
             ======================================== -->
 
-            <section id="whyUs" class="section aboutSection">
+            <section id="whyUs" class="aboutSection">
 
                 <h2 class="sectionTitle"> Why Smoke Shop+ </h2>
 
@@ -264,22 +333,21 @@
 
                 </div>
 
-
-                <!-- ========================================
-                            OWNER SUB SECTION
-                ======================================== -->
+                <!-- OWNER SUB SECTION -->
 
                 <div class="ownerSection">
 
                     <div class="ownerImage">
 
-                        <img src="images/ownerPhoto.jpg" alt="Owner of Smoke Shop+" class="ownerRealImage">
+                        <img src="images/ownerPhoto.jpg" alt="Owner of Smoke Shop+" class="ownerPhoto">
 
                     </div>
 
                     <div class="ownerContent">
 
-                        <h3> Built By Passion. Backed By <span class="ownerAccent"> Community </span>. </h3>
+                        <h3>
+                            Built By Passion. Backed By <span class="ownerAccent"> Community </span>.
+                        </h3>
 
                         <p>
                             Smoke Shop+ was founded with one simple goal:
@@ -307,19 +375,19 @@
 
             </section>
 
-
-
             <!-- ========================================
                     SHOP GEAR BY CATEGORY
             ======================================== -->
 
-            <section id="categories" class="section sectionDark categoriesSection">
+            <section id="categories" class="categoriesSection">
 
                 <h2 class="sectionTitle"> Shop Gear By Category </h2>
 
                 <div class="categoryGrid">
 
-                    <a href="gallery.html#glass" class="categoryCard reveal">
+                    <a href="gallery.html#glass" class="categoryCard">
+
+                        <img src="images/glassGEAR.jpeg" alt="Premium Glass">
 
                         <div class="categoryOverlay"></div>
 
@@ -329,17 +397,21 @@
 
                     </a>
 
-                    <a href="gallery.html#wraps" class="categoryCard reveal">
+                    <a href="gallery.html#wraps" class="categoryCard">
+
+                        <img src="images/papersGEAR1.jpeg" alt="Wraps and Papers">
 
                         <div class="categoryOverlay"></div>
 
-                        <h3> Wraps & Papers </h3>
+                        <h3> Wraps &amp; Papers </h3>
 
                         <p> Top shelf brands only. </p>
 
                     </a>
 
-                    <a href="gallery.html#vapes" class="categoryCard reveal">
+                    <a href="gallery.html#vapes" class="categoryCard">
+
+                        <img src="images/vapeGEAR1.jpeg" alt="Vape Tech">
 
                         <div class="categoryOverlay"></div>
 
@@ -349,20 +421,22 @@
 
                     </a>
 
-                    <a href="gallery.html#accessories" class="categoryCard reveal">
+                    <a href="gallery.html#accessories" class="categoryCard">
+
+                        <img src="images/merchGEAR.jpeg" alt="Accessories">
 
                         <div class="categoryOverlay"></div>
 
                         <h3> Accessories </h3>
 
-                        <p> T-Shirts • Hats • Bags • More </p>
+                        <p> T-Shirts &bull; Hats &bull; Bags &bull; More </p>
 
                     </a>
 
                 </div>
 
                 <a href="gallery.html" class="glowBTN categoriesBTN">
-                    View Full Gallery →
+                    View Full Gallery &#8594;
                 </a>
 
             </section>
@@ -371,7 +445,7 @@
                             REVIEWS
             ======================================== -->
 
-            <section id="reviews" class="section reviewsSection">
+            <section id="reviews" class="reviewsSection">
 
                 <div class="reviewsHeader">
 
@@ -392,7 +466,6 @@
                         <span> S </span>
                     </p>
 
-
                     <h2 class="reviewsTitle">
                         Loved By Local Customers
                     </h2>
@@ -411,35 +484,128 @@
 
                         </div>
 
-                        <a href="https://search.google.com/local/writereview?placeid=ChIJ54IVvUbfRYgRDOkYFnkYTyY" target="_blank" rel="noopener" class="glowBTN glowBTN--google">
-                            Leave a Google Review →
+                        <a href="https://search.google.com/local/writereview?placeid=ChIJ54IVvUbfRYgRDOkYFnkYTyY" target="_blank" rel="noopener" class="glowBTN">
+                            Leave a Google Review &#8594;
                         </a>
 
                     </div>
 
                 </div>
 
-
                 <div id="reviewsGrid" class="reviewsGrid"></div>
 
             </section>
 
+            <!-- ========================================
+                    HOW DID YOU FIND US
+            ======================================== -->
+
+            <section id="findUs" class="findUsSection">
+
+                <h2 class="sectionTitle"> How Did You Find Us? </h2>
+
+                <p class="findUsSub">
+                    Your feedback helps us grow and continue delivering
+                    Catlettsburg's most elevated smoke experience.
+                </p>
+
+                <form class="findUsForm" action="https://formspree.io/f/mlgwnkek" method="POST">
+
+                    <input type="hidden" name="page" id="pageField">
+
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <input type="hidden" name="_subject" value="Marketing Intelligence">
+
+                    <input type="hidden" name="_next" value="https://nulostudio.com/thank-you.html">
+
+                    <div class="radioGrid">
+
+                        <label class="radioCard">
+
+                            <input type="radio" name="source" value="Google Search" required>
+
+                            <span> Google Search </span>
+
+                        </label>
+
+                        <label class="radioCard">
+
+                            <input type="radio" name="source" value="Word of Mouth">
+
+                            <span> Word of Mouth </span>
+
+                        </label>
+
+                        <label class="radioCard">
+
+                            <input type="radio" name="source" value="Returning Customer">
+
+                            <span> Returning Customer </span>
+
+                        </label>
+
+                        <label class="radioCard">
+
+                            <input type="radio" name="source" value="Instagram">
+
+                            <span> Instagram </span>
+
+                        </label>
+
+                        <label class="radioCard">
+
+                            <input type="radio" name="source" value="Drove By">
+
+                            <span> Drove By </span>
+
+                        </label>
+
+                        <label class="radioCard">
+
+                            <input type="radio" name="source" value="Google Maps">
+
+                            <span> Google Maps </span>
+
+                        </label>
+
+                    </div>
+
+                </form>
+
+                <!-- CTA ROW -->
+
+                <div class="findUsCTAs">
+
+                    <a href="contact.html" class="glowBTN">
+                        Contact Us &#8594;
+                    </a>
+
+                    <a href="hireForm.html" class="ghostBTN">
+                        Join The Team &#8594;
+                    </a>
+
+                </div>
+
+            </section>
 
         </main>
-
-
 
         <!-- ========================================
                         FOOTER
         ======================================== -->
 
-        <footer class="mainFooter">
+        <footer class="FOOTER">
 
             <div class="footerContainer">
 
                 <div class="footerBrand">
 
-                    <h3 class="logo"> Smoke <span> Shop+ </span> </h3>
+                    <a href="index.html" class="LOGO">
+
+                        Smoke&nbsp;<span>Shop+</span>
+                        
+                    </a>
 
                     <p> Catlettsburg's Premium Smoke Destination. </p>
 
@@ -453,10 +619,9 @@
 
                 </div>
 
-
                 <div class="footerHours">
 
-                    <h4> Hours & Location </h4>
+                    <h4> Hours &amp; Location </h4>
 
                     <p> Mon-Sun | 8am - Midnight </p>
 
@@ -465,10 +630,9 @@
                         Catlettsburg, KY 41129
                     </p>
 
-                    <a href="tel:+16063698939"> 📞 (606) 369-8939 </a>
+                    <a href="tel:+16063698939"> &#128222; (606) 369-8939 </a>
 
                 </div>
-
 
                 <div class="footerLinks">
 
@@ -484,7 +648,6 @@
 
                 </div>
 
-
                 <div class="footerLegal">
 
                     <h4> Legal </h4>
@@ -499,13 +662,12 @@
 
             </div>
 
-
             <div class="footerBottom">
 
-                <p> © 2026 Smoke Shop+ </p>
+                <p> &copy; 2026 Smoke Shop+ </p>
 
                 <p class="devLine">
-                    Crafted Digital Experience —
+                    Crafted Digital Experience &mdash;
                     <a href="#" class="devCredit"> Nulo Studio </a>
                 </p>
 
@@ -513,10 +675,11 @@
 
         </footer>
 
+        <!-- SCRIPTS -->
+
         <script src="js/indexJS.js"></script>
 
-        <script>lucide.createIcons();</script>
-
+        <script> lucide.createIcons(); </script>
 
     </body>
 

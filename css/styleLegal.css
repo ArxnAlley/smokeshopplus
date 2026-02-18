@@ -1,0 +1,183 @@
+/* =====================================================
+   BODY OVERRIDES
+===================================================== */
+
+body
+{
+    background-color: #000000;
+
+    color: #FFFFFF;
+
+    padding-top: 140px;
+}
+
+/* =====================================================
+   LEGAL PAGE
+===================================================== */
+
+.legalPage
+{
+    max-width: 860px;
+
+    margin: auto;
+
+    font-size: 17.5px;
+
+    padding-left: 8%;
+
+    padding-right: 8%;
+
+    padding-bottom: 140px;
+
+    line-height: 1.95;
+
+    color: rgba(255, 255, 255, 0.82);
+}
+
+/* HEADINGS */
+
+.legalPage h1
+{
+    font-family: Orbitron;
+
+    margin-bottom: 60px;
+
+    position: relative;
+
+    padding-bottom: 18px;
+}
+
+.legalPage h1::after
+{
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 70px;
+
+    height: 2px;
+
+    background-color: #FFFFFF;
+
+    opacity: 0.2;
+}
+
+.legalPage h2
+{
+    margin-top: 70px;
+
+    margin-bottom: 18px;
+
+    color: #FFFFFF;
+}
+
+.legalPage p
+{
+    margin-bottom: 22px;
+}
+
+/* =====================================================
+   LINKS
+===================================================== */
+
+.legalPage a
+{
+    color: #00FFA7;
+}
+
+/* =====================================================
+   UPDATED DATE
+===================================================== */
+
+.updated
+{
+    margin-top: 60px;
+
+    opacity: 0.6;
+}
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.legalDivider
+{
+    margin-bottom: 32px;
+
+    border: none;
+
+    height: 1px;
+
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* =====================================================
+   LEGAL NAV LINKS
+===================================================== */
+
+.legalLinks
+{
+    text-align: center;
+
+    font-size: 0.95rem;
+
+    opacity: 0.75;
+
+    margin-bottom: 60px;
+}
+
+.legalLinks a
+{
+    color: #00FFA7;
+
+    text-decoration: none;
+
+    margin: 0 10px;
+}
+
+.legalLinks a:hover
+{
+    text-decoration: underline;
+}
+
+/* =====================================================
+   LEGAL FOOTER
+===================================================== */
+
+.legalFooter
+{
+    margin-top: 120px;
+
+    padding: 40px 8%;
+
+    text-align: center;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    color: rgba(255, 255, 255, 0.6);
+
+    font-size: 0.9rem;
+}
+
+.legalFooterLinks
+{
+    margin-top: 10px;
+}
+
+.legalFooterLinks a
+{
+    color: #00FFA7;
+
+    text-decoration: none;
+
+    margin: 0 6px;
+}
+
+.legalFooterLinks a:hover
+{
+    text-decoration: underline;
+}
