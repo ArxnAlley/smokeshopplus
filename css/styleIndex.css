@@ -2204,19 +2204,38 @@ body.ageLocked
 
 .devCredit
 {
-    display:flex;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
-    align-items:center;
+    font-size: .75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 
-    gap:8px;
+    color: rgba(255,255,255,.55);
+}
 
-    justify-content:flex-end;
+.devLink
+{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
 
-    text-decoration:none;
+.devLink img
+{
+    height: 38px;   /* MUCH more professional than 120px */
+    width: auto;
 
-    opacity:1;
+    opacity: .7;
+    transition: opacity .25s ease, transform .25s ease;
+}
 
-    transition:none; /* kills hover fade */
+/* subtle premium hover */
+.devLink:hover img
+{
+    opacity: 1;
+    transform: translateY(-1px);
 }
 
 /* TEXT */
