@@ -6,7 +6,7 @@
 
         <meta charset="UTF-8">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
         <title> Smoke Shop+ | Premium Smoke Shop </title>
 
@@ -30,36 +30,51 @@
 
     <body>
 
-        <!-- =======================================
-                        LOADER
-        ======================================== -->
+<!-- =======================================
+                AGE GATE
+======================================= -->
 
-        <div class="siteLoader">
+<div id="ageGate" class="ageGate">
 
-            <h1 class="siteLoaderLogo">
-                Smoke Shop+
-            </h1>
+    <div class="ageGateCard">
 
-            <div class="siteLoaderSmoke">
+        <!-- TEXT LOGO -->
+        <div class="ageGateBrand">
+            <span class="logoMain">
+                Smoke&nbsp;<span>Shop+</span>
+            </span>
+        </div>
 
-                <div class="siteLoaderRing ringBig"></div>
+        <!-- BADGE -->
+        <div class="ageGateBadge">21+ Only</div>
 
-                <div class="siteLoaderRing ringSmall delay1"></div>
+        <!-- TEXT -->
+        <p class="ageGateText">
+            Smoke Shop+ is intended for adults 21 and older.
+            Please verify your age to enter.
+        </p>
 
-                <div class="siteLoaderRing ringSmall delay2"></div>
+        <!-- BUTTONS -->
+        <div class="ageGateButtons">
 
-                <div class="siteLoaderRing ringSmall delay3"></div>
+            <button class="ageYes">
+                I am 21+
+            </button>
 
-            </div>
-
-            <p class="siteLoaderText">
-                Loading
-                <span class="siteLoaderDot"></span>
-                <span class="siteLoaderDot"></span>
-                <span class="siteLoaderDot"></span>
-            </p>
+            <button class="ageNo">
+                Under 21
+            </button>
 
         </div>
+
+        <!-- OPTIONAL LOADING STATE -->
+        <div class="ageGateLoading">
+            Entering<span>.</span><span>.</span><span>.</span>
+        </div>
+
+    </div>
+
+</div>
 
         <!-- =======================================
                         NAV
@@ -111,7 +126,9 @@
 
                 <span class="phoneText"> &#128222; Call Now </span>
 
-                <span class="phoneIcon"> &#128222; </span>
+                <span class="phoneIcon">
+                    <i data-lucide="phone"></i>
+                </span>
 
             </a>
 
@@ -161,14 +178,14 @@
                     FLOATING PILLS
         ======================================== -->
 
-        <a class="addressPill" href="https://www.google.com/maps/search/?api=1&query=3333+Louisa+Rd" target="_blank">
+        <a class="addressPill" href="https://www.google.com/maps/dir/?api=1&destination=3333+Louisa+Rd+Suite+3+Catlettsburg+KY">
 
             <span class="addressFull">
 
-                &#128205; 3333 Louisa Rd Suite 3, Catlettsburg, KY &bull; Open 8AM-Midnight
+                &#128205; Get Directions • <span class="ownerAccent">Open Late</span>
 
             </span>
-
+ 
             <span class="addressCompact">
 
                 &#128205; Directions
@@ -181,7 +198,7 @@
 
             <span class="ratingFull">
 
-                &#11088;&#11088;&#11088;&#11088;&#11088; 5.0 Rating on Google
+                &#11088; 5.0 Rating on Google
 
             </span>
 
@@ -346,7 +363,7 @@
                     <div class="ownerContent">
 
                         <h3>
-                            Built By Passion. Backed By <span class="ownerAccent"> Community </span>.
+                            Built By Passion. Backed By <span class="ownerAccent"> Community. </span>
                         </h3>
 
                         <p>
@@ -666,10 +683,16 @@
 
                 <p> &copy; 2026 Smoke Shop+ </p>
 
-                <p class="devLine">
-                    Crafted Digital Experience &mdash;
-                    <a href="#" class="devCredit"> Nulo Studio </a>
-                </p>
+                <a href="https://nulostudio.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="devCredit">
+
+                    <span class="devLabel">Built By</span>
+
+                    <img src="images/nuloLogo.png" alt="Nulo Studio">
+
+                </a>
 
             </div>
 

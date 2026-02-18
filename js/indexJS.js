@@ -2,7 +2,7 @@
    GLOBAL CONSTANTS
 ========================================= */
 
- const API_KEY = "AIzaSyA0Sy2zj5Cif3gjbuvNits5juVpAGmXDfA";
+ const API_KEY = "AIzaSyBzIJwWoGc5PSIjflhkmV4dzi8ZvIkUkec";
   
   const PLACE_ID = "ChIJ54IVvUbfRYgRDOkYFnkYTyY";
 
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", initApp);
 
 function initApp(){
 
-  initSiteLoader();
+  initAgeGate();
   initMobileMenu();
   initPillVisibility();
   initFindUsForm();
@@ -26,49 +26,47 @@ function initApp(){
 }
 
 /* =========================================
-   FIRST-VISIT LOADER (SESSION BASED)
+   AGE GATE
 ========================================= */
 
-function initSiteLoader()
+function initAgeGate()
 {
+  const gate = document.getElementById("ageGate");
+  if(!gate) return;
 
-  const loader = document.querySelector(".siteLoader");
-  
-  if(!loader) return;
+  const verified = sessionStorage.getItem("ageVerified");
 
-  const hasVisited = sessionStorage.getItem("visited");
-
-  if(!hasVisited){
-
-    document.body.classList.add("loading");
-    
-    sessionStorage.setItem("visited", "true");
-
-    window.addEventListener("load", () => 
-    {
-
-      
-      setTimeout(() => 
-      {
-
-          loader.classList.add("hidden");
-
-          document.body.classList.remove("loading");
-
-      }, 1600);
-
-    });
-
-  }
-  
-  else
-    {
-
-    loader.style.display = "none";
-
+  // Already verified this session
+  if(verified)
+  {
+    gate.style.display = "none";
+    document.body.classList.remove("ageLocked");
+    return;
   }
 
+  document.body.classList.add("ageLocked");
+
+  document.querySelector(".ageYes")?.addEventListener("click", () =>
+  {
+    sessionStorage.setItem("ageVerified", "true");
+
+    const loader = document.querySelector(".ageGateLoading");
+
+    loader.style.display = "block";
+
+    setTimeout(()=>{
+        gate.style.display = "none";
+    }, 850);
+
+    document.body.classList.remove("ageLocked");  // ✅ this is the right unlock
+  });
+
+  document.querySelector(".ageNo")?.addEventListener("click", () =>
+  {
+    window.location.href = "https://www.google.com";
+  });
 }
+
 
 /* =========================================
    MOBILE MENU (SCROLL LOCK SAFE)
@@ -85,12 +83,14 @@ function initMobileMenu()
 
   hamburger.addEventListener("click", () => 
   {
-
+  
     hamburger.classList.toggle("active");
-    
+  
     mobileMenu.classList.toggle("active");
-    
+  
     document.body.classList.toggle("menu-open");
+
+    syncActiveNavToScroll(); // 🔥 THIS IS THE FIX
 
   });
 
@@ -243,6 +243,32 @@ function initActiveNav()
   sections.forEach(section=>observer.observe(section));
 
 }
+
+function syncActiveNavToScroll()
+{
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".navLinks a, .mobileMenuInner a");
+
+  let current = "";
+
+  sections.forEach(section =>
+  {
+    const top = section.offsetTop - 140;
+    const bottom = top + section.offsetHeight;
+
+    if (window.scrollY >= top && window.scrollY < bottom)
+    {
+      current = section.id;
+    }
+  });
+
+  navLinks.forEach(link =>
+  {
+    const href = link.getAttribute("href");
+    link.classList.toggle("active", href === `#${current}`);
+  });
+}
+
 
 /* =========================================
    ACTIVE NAV — PAGE MATCH
